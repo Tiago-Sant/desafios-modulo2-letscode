@@ -3,70 +3,52 @@
     let entrance = []
     let historic = []
 
-    const enter = (x) => {
+    const enter = (operator) => {
 
-      if (entrance.length === 0 && isNaN(x) || entrance.length === 2 && isNaN(x)) {
-        return console.log(`${x} não é um número`)
+      if (entrance.length === 0 && isNaN(operator) || entrance.length === 2 && isNaN(operator)) {
+        return console.log(`${operator} não é um número`)
       }
 
       if (entrance.length === 1) {
-        return entranceOperatorsFilter(x)
+        return entranceOperatorsFilter(operator)
       }
 
       if (entrance.length === 2) {
-        entrance = [...entrance, x]
+        entrance = [...entrance, operator]
         historic = [...historic, entrance]
 
         return entrance
       }
       else if (entrance.length > 2) {
-        return entrance = [x]
+        return entrance = [operator]
       }
 
-      return entrance = [...entrance, x]
+      return entrance = [...entrance, operator]
     }
 
-    const entranceOperatorsFilter = (x) => {
+    let sum = (x, y) => x + y
+    let subtract = (x, y) => x + y
+    let divide = (x, y) => x / y
+    let multiply = (x, y) => x * y
 
-      switch (x) {
-        case '+':
-          return entrance = [...entrance, x]
-
-        case '-':
-          return entrance = [...entrance, x]
-
-        case '/':
-          return entrance = [...entrance, x]
-
-        case '*':
-          return entrance = [...entrance, x]
-
-        default: console.log(`${x} não é um operator válido. Os operadores permitidos são: +, -, / e *`)
-          break
-      }
+    const handlerOperators = {
+      '+': sum,
+      '-': subtract,
+      '/': divide,
+      '*': multiply
     }
 
+    const entranceOperatorsFilter = (x) => handlerOperators[x] ?
+      entrance = [...entrance, x] :
+      console.log(`${x} não é um operador válido`)
 
-    const equalResult = (operators) => {
+    const equalResult = (arr) => {
+      let [number1, operator, number2] = arr
 
-      switch (operators[1]) {
-        case '+':
-          return `${operators[0] + operators[2]}`
-
-        case '-':
-          return `${operators[0] - operators[2]}`
-
-        case '/':
-          return `${operators[0] / operators[2]}`
-
-        case '*':
-          return `${operators[0] * operators[2]}`
-
-        default: console.log('Os operadores permitidos são: +, -, / e *')
-          break
-      }
+      return handlerOperators[operator] ?
+        handlerOperators[operator](number1, number2) :
+        `${operator} não é um operador válido`
     }
-
     const equal = () => {
       return equalResult(entrance)
     }
