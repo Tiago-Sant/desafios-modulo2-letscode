@@ -55,5 +55,5 @@ function getResults(arr) {
   )
 }
 
-console.log(getResults(voters))
+
 

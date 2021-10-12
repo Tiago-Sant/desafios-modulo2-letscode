@@ -12,5 +12,3 @@ function makeStrings(arr) {
     }
   )
 }
-
-console.log(makeStrings(people))

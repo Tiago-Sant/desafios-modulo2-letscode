@@ -1,102 +1,90 @@
-(() => {
-  factoryCalculator = () => {
-    let entrance = []
-    let historic = []
 
-    const enter = (operator) => {
+const calculator = (() => {
+  let entrance = []
+  let historic = []
 
-      if (entrance.length === 0 && isNaN(operator) || entrance.length === 2 && isNaN(operator)) {
-        return console.log(`${operator} não é um número`)
-      }
+  const sum = (x, y) => x + y
+  const subtract = (x, y) => x - y
+  const divide = (x, y) => x / y
+  const multiply = (x, y) => x * y
 
-      if (entrance.length === 1) {
-        return entranceOperatorsFilter(operator)
-      }
-
-      if (entrance.length === 2) {
-        entrance = [...entrance, operator]
-        historic = [...historic, entrance]
-
-        return entrance
-      }
-      else if (entrance.length > 2) {
-        return entrance = [operator]
-      }
-
-      return entrance = [...entrance, operator]
-    }
-
-    let sum = (x, y) => x + y
-    let subtract = (x, y) => x + y
-    let divide = (x, y) => x / y
-    let multiply = (x, y) => x * y
-
-    const handlerOperators = {
-      '+': sum,
-      '-': subtract,
-      '/': divide,
-      '*': multiply
-    }
-
-    const entranceOperatorsFilter = (x) => handlerOperators[x] ?
-      entrance = [...entrance, x] :
-      console.log(`${x} não é um operador válido`)
-
-    const equalResult = (arr) => {
-      let [number1, operator, number2] = arr
-
-      return handlerOperators[operator] ?
-        handlerOperators[operator](number1, number2) :
-        `${operator} não é um operador válido`
-    }
-    const equal = () => {
-      return equalResult(entrance)
-    }
-
-    const listFilter = (listOperations) => {
-      listResult = []
-
-      for (const i of listOperations) {
-        listResult = [...listResult, `${i[0]}${i[1]}${i[2]} => ${equalResult(i)}`]
-      }
-      return listResult
-    }
-
-    const list = () => listFilter(historic)
-
-    const reset = () => historic = []
-
-    return {
-      enter,
-      equal,
-      list,
-      reset
-    };
+  const handlerOperators = {
+    '+': sum,
+    '-': subtract,
+    '/': divide,
+    '*': multiply
   }
 
-  let calculator = factoryCalculator();
+  const filter = (operation, filter) => operation.length === filter
 
-  calculator.enter('true')
-  calculator.enter(5)
-  calculator.enter('tiago')
-  calculator.enter('+')
-  calculator.enter('true')
-  calculator.enter(2)
-  console.log(calculator.equal())
+  const filterNumbers = (operation, op, x, y) => filter(operation, x) && isNaN(op) || filter(operation, y) && isNaN(op)
 
-  calculator.enter(2)
-  calculator.enter('+')
-  calculator.enter(8)
-  console.log(calculator.equal())
+  const addInEntrance = x => entrance = [...entrance, x]
 
-  console.log(calculator.list())
-  calculator.reset()
+  const entranceOperatorsFilter = (x) => handlerOperators[x] ?
+    addInEntrance(x) :
+    `${x} não é um operador válido`
 
-  console.log(calculator.list())
+  const addInHistoric = array => historic = [...historic, array]
+
+  const filterLastNumber = op => {
+    addInEntrance(op)
+    addInHistoric(entrance)
+
+    return entrance
+  }
+
+  const enter = operator => {
+
+    if (filterNumbers(entrance, operator, 0, 2)) {
+      return `${operator} não é um número`
+    }
+
+    if (filter(entrance, 1)) {
+      return entranceOperatorsFilter(operator)
+    }
+
+    if (filter(entrance, 2)) {
+      return filterLastNumber(operator)
+    }
+
+    if (entrance.length > 2) {
+      return entrance = [operator]
+    }
+
+    return addInEntrance(operator)
+  }
 
 
+  const equalResult = (arr) => {
+    let [number1, operator, number2] = arr
+
+    return handlerOperators[operator] ?
+      handlerOperators[operator](number1, number2) :
+      `${operator} não é um operador válido`
+  }
+  const equal = () => {
+    return equalResult(entrance)
+  }
+
+  const listFilter = (listOperations) => {
+    listResult = []
+
+    for (const operation of listOperations) {
+      let [number1, operator, number2] = operation
+      listResult = [...listResult, `${number1}${operator}${number2} => ${equalResult(operation)}`]
+    }
+    return listResult
+  }
+
+  const list = () => listFilter(historic)
+
+  const reset = () => historic = []
+
+  return {
+    enter,
+    equal,
+    list,
+    reset
+  };
 })()
-
-
-
-
