@@ -6,7 +6,7 @@
 
 Fazer as classes conforme a imagem, sendo que as classes Teacher e Student sejam instâncias de Person
 
-###Como usar a aplicação:
+### Como usar a aplicação:
 
 Para criar uma Pessoa, ou professor ou estudante basta fazer fazer uma instância passando o primeiro nome, sobrenome, idade e sexo, no caso do professor precisa passar a matéria qie ele leciona também:
 
