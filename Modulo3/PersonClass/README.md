@@ -1,6 +1,6 @@
-#Exercicio: Classes Person, Teacher e Student
+# Exercicio: Classes Person, Teacher e Student
 
-###O exercício:
+### O exercício:
 
 ![PersonExercise](https://user-images.githubusercontent.com/82619418/137971821-222539d8-fd40-464b-8704-fc7702594525.png)
 
