@@ -1,0 +1,112 @@
+.calculator {
+  background: linear-gradient(#111, #444);
+  color: rgb(240, 231, 231);
+  padding: 1rem;
+  max-width: 1000px;
+  margin: auto;
+  font-family: sans-serif, 'Times New Roman', Times, serif;
+}
+
+.content {
+  display: flex;
+  justify-content: space-around;
+}
+
+h1 {
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin-left: 1rem;
+}
+
+input:checked + label::before {
+  background-color: red;
+}
+
+.operators {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.operator {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  margin: 1rem;
+}
+
+.result {
+  margin-left: 1rem;
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.result div {
+  display: flex;
+}
+
+.number {
+  height: 2rem;
+  background: rgb(240, 231, 231);
+  color: #333;
+  font-size: 1.3rem;
+  font-family: sans-serif, 'Times New Roman', Times, serif;
+  border-radius: 1rem 0 0 1rem;
+}
+
+button {
+  background: linear-gradient(#521111, #ff0404);
+  color: rgb(240, 231, 231);
+  height: 2.5rem;
+  font-size: 1.3rem;
+  font-family: sans-serif, 'Times New Roman', Times, serif;
+  min-width: 10rem;
+}
+
+.result h2 {
+  font-size: 2rem;
+}
+
+.igual {
+  margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .result {
+    display: block;
+  }
+
+  .number {
+    max-width: 50%;
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+  .button {
+    max-width: 40%;
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+  .result h2 {
+    display: block;
+    text-align: center;
+    margin: 1rem 0;
+  }
+  .reset {
+    width: 70%;
+    margin-left: 2rem;
+  }
+}

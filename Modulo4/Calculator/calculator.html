@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="calculator.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <main class='calculator'>
+    <h1>Calculadora</h1>
+
+    <div class="content">
+
+      <section class='operators'>
+        <h2>Escolha a operação:</h2>
+        <div class="operator">
+          <input type="radio" name="operator" value='+' id='somar' checked>
+          <label for="somar">somar</label>
+        </div>
+        <div class="operator">
+          <input type="radio" name="operator" value='-' id='subtrair'>
+          <label for="subtrair">subtrair</label>
+        </div>
+        <div class="operator">
+          <input type="radio" name="operator" value='/' id='dividir'>
+          <label for="dividir">dividir</label>
+        </div>
+        <div class="operator">
+          <input type="radio" name="operator" value='*' id='multiplicar'>
+          <label for="multiplicar">multiplicar</label>
+        </div>
+      </section>
+      <section class="result">
+        <div>
+          <input class='number' type="number">
+          <button class='button enter'>Enter</button>
+        </div>
+        <button class='button igual'>Igual</button>
+
+        <h2> Total: <span class='total'>0</span></h2>
+
+
+      </section>
+
+    </div>
+
+  </main>
+  <script src="calculator.js"></script>
+</body>
+
+</html>
