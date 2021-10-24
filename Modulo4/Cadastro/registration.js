@@ -13,7 +13,7 @@ const createLi = (whereWillBeCreated, inputText) => {
   whereBeCreated.appendChild(li)
 
   li.textContent = inputText
-  
+
   return li
 }
 
@@ -27,8 +27,8 @@ const createButtonRemove = li => {
 
   button.innerText = 'remove'
 
-  button.classList.add('remove', `${classButton}`)
-  
+  button.classList.add('remove', classButton)
+
   document.querySelector(`.${classButton}`).addEventListener('click', function () { this.parentNode.remove() })
 
 }
@@ -38,11 +38,11 @@ const form = document.querySelector('form')
 
 form.addEventListener('submit', function (evt) {
   evt.preventDefault()
-  
+
   const input = document.querySelector('input')
 
   const createButtonRemoveInLi = createElements(createButtonRemove(createLi('ul', input.value)))
-  
+
 
   input.value = ''
 
