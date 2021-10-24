@@ -1,20 +1,20 @@
 body {
-  background-color: #2047c5;
+  background-color: #202024;
 }
 
 .content {
   height: 100vh;
   margin: 2rem auto;
   max-width: 800px;
-  color: #202a25;
+  color: #e1e1e6;
 }
 
 main {
   padding: 0 1rem;
-  background-color: #fff8f0;
+  background-color: #29292e;
   width: 800px;
   min-height: 80vh;
-  border: 2px solid black;
+  border: 2px solid #6833e4;
 }
 
 li {
@@ -25,12 +25,16 @@ li {
   width: 90%;
 }
 
+li:hover {
+  border: 2px solid #9466ff;
+}
+
 .ok {
-  background-color: #5362bb;
-  color: #fff8f0;
+  background-color: #04d361;
+  color: #e1e1e6;
 }
 
 .remove {
-  background-color: #883f3f;
-  color: #fff8f0;
+  background-color: #ce4a4a;
+  color: #e1e1e6;
 }

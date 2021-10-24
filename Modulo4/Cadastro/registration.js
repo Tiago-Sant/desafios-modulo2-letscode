@@ -2,63 +2,51 @@ const selectElement = elementSelector => document.querySelector(elementSelector)
 
 const joinString = string => string.split(' ').join('')
 
-const createElements = whereWillBeCreated => (elementParent, fnCreateParent) => (elementChild, fnCreateChild) => fnInButton => fnInButton(fnCreateChild(elementChild, fnCreateParent(whereWillBeCreated, elementParent)))
+const createElements = (whereWillBeCreated, inputText, fnCreateLi) => (fnCreateChild) => fnCreateChild(fnCreateLi(whereWillBeCreated, inputText))
 
 
-const createParentELement = (whereWillBeCreated, elementParent) => {
-  const ul = selectElement(whereWillBeCreated)
+const createLi = (whereWillBeCreated, inputText) => {
+  const whereBeCreated = document.querySelector(whereWillBeCreated)
 
-  const elParent = document.createElement(elementParent)
+  const li = document.createElement('li')
 
-  ul.appendChild(elParent)
+  whereBeCreated.appendChild(li)
 
-  const input = selectElement('input').value
-
-  elParent.textContent = input
-
-  return elParent
+  li.textContent = inputText
+  
+  return li
 }
 
-const createElementChild = (elementChild, fnCreateParent) => {
+const createButtonRemove = li => {
 
-  const elParent = fnCreateParent
+  const button = document.createElement('button')
 
-  const elChild = document.createElement(elementChild)
+  li.appendChild(button)
 
-  elParent.className = joinString(selectElement('input').value)
+  const classButton = joinString(li.innerText) + parseInt(Math.random() * 100000)
 
-  elParent.appendChild(elChild)
+  button.innerText = 'remove'
 
-  const classElChild = joinString(selectElement('input').value) + parseInt(Math.random() * 100000)
+  button.classList.add('remove', `${classButton}`)
+  
+  document.querySelector(`.${classButton}`).addEventListener('click', function () { this.parentNode.remove() })
 
-  elChild.innerText = 'remove'
-
-  elChild.classList.add('remove', `${classElChild}`)
-
-  return `.${classElChild}`
 }
 
-const removeParent = fnCreateChild => {
-  const childrenSelector = fnCreateChild
 
-  selectElement(childrenSelector).addEventListener('click', function () { this.parentNode.remove() })
-}
-
-const createInUL = createElements('ul')
-
-const createLiInUl = createInUL('li', createParentELement)
-
-const createElementButtonInLi = createLiInUl('button', createElementChild)
-
-const form = selectElement('form')
+const form = document.querySelector('form')
 
 form.addEventListener('submit', function (evt) {
   evt.preventDefault()
+  
+  const input = document.querySelector('input')
 
-  const createButtonRemoveInLi = createElementButtonInLi(removeParent)
+  const createButtonRemoveInLi = createElements(createButtonRemove(createLi('ul', input.value)))
+  
 
-  selectElement('input').value = ''
+  input.value = ''
 
-  selectElement('input').focus()
+  input.focus()
 
 })
+
