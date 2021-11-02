@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: Roboto, sans-serif;
+    }
+
+    body {
+      color: #e1e6e1;
+      background-color: #121214;
+    }
+
+    main {
+      margin: 2rem auto;
+      max-width: 1200px;
+      text-align: center;
+
+    }
+
+    div {
+      margin: 1rem;
+
+    }
+
+    button {
+      background: #ff008e;
+      border: 0;
+      margin: 24px;
+      cursor: pointer;
+      padding: 0 32px;
+      height: 40px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    button:hover {
+      filter: brightness(0.9);
+    }
+
+    .list {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    ul {
+      text-align: center;
+      width: 300px;
+    }
+
+    li {
+      border: 1px solid #8d8d99;
+      list-style: none;
+      padding: .5rem;
+    }
+  </style>
+
+  <title>Desafio Promises Tiago</title>
+</head>
+
+<body>
+  <main>
+    <h1>Desafio Promisses Tiago</h1>
+    <div>
+      <button type="button" onclick="makePromisesList()">Gerar Lista</button>
+    </div>
+    <div class="father-list"></div>
+  </main>
+
+
+  <script src="lists.js"></script>
+</body>
+
+</html>
